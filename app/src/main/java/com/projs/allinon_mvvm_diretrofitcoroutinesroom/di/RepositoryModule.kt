@@ -5,14 +5,16 @@ import com.projs.allinon_mvvm_diretrofitcoroutinesroom.model.repository.Reposito
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(Singleton::class)
+@InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
-@Binds
-abstract fun bindRepo(
-    repo: Repository
-): IRepository
+    @Binds
+    @Singleton
+    abstract fun bindRepo(
+        repo: Repository
+    ): IRepository
 }

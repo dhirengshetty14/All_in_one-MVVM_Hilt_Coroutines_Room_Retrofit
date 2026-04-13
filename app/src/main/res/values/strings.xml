@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">All in on- MVVM-DI+Retrofit+Coroutines+Room</string>
+    <string name="user_id_format">ID: %d</string>
+    <string name="user_name_format">Name: %s</string>
+    <string name="user_email_format">Email: %s</string>
+    <string name="load_users">Load Users</string>
+    <string name="users_title">Users Directory</string>
+    <string name="users_subtitle">Browse all registered users</string>
+    <string name="email_label">Email</string>
+    <string name="user_id_label">ID</string>
+    <string name="load_users_description">Click to load users from the database</string>
 </resources>
