@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
@@ -37,6 +39,24 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewUsers)
 
         btnLoadUsers.setOnClickListener {
+            // Add creative button animation
+            btnLoadUsers.animate()
+                .scaleX(0.95f)
+                .scaleY(0.95f)
+                .setDuration(100)
+                .withEndAction {
+                    btnLoadUsers.animate()
+                        .scaleX(1f)
+                        .scaleY(1f)
+                        .setDuration(100)
+                        .start()
+                }
+                .start()
+
+            // Show loading state
+            btnLoadUsers.isEnabled = false
+            btnLoadUsers.text = "🔄 Loading..."
+
             viewModel.loadUsers()
         }
     }
@@ -52,6 +72,11 @@ class MainActivity : AppCompatActivity() {
     private fun observeData() {
         viewModel.users.observe(this) { users ->
             Log.d("MainActivity", "Users: $users")
+
+            // Reset button state
+            btnLoadUsers.isEnabled = true
+            btnLoadUsers.text = getString(R.string.load_users)
+
             users?.let {
                 userAdapter.submitList(it)
             }

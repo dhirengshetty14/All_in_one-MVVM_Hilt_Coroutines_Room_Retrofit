@@ -3,103 +3,237 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="8dp"
-    app:cardBackgroundColor="@color/white">
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="12dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
-        <!-- Header with ID Badge -->
+        <!-- Creative Header with Avatar and Info -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="16dp">
 
-            <ImageView
-                android:id="@+id/ivIdBadge"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_circular_id"
-                android:contentDescription="@string/user_id_label"
-                android:gravity="center" />
+            <!-- Avatar with Gradient Border -->
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="16dp">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_avatar_gradient"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_circular_white"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tvAvatarInitial"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="U"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_blue" />
+
+            </FrameLayout>
+
+            <!-- User Info -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="John Doe"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/bg_status_dot"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/tvUserId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ID: 1"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Action Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUserAction"
+                style="@style/Widget.MaterialComponents.Button.IconButton"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:icon="@drawable/ic_more_vert"
+                app:iconTint="@color/text_secondary"
+                android:backgroundTint="@color/very_light_gray" />
+
+        </LinearLayout>
+
+        <!-- Creative Divider with Gradient -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/bg_divider_gradient"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Contact Information Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_contact_section"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_info"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_blue"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Email Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_email_creative"
+                    android:contentDescription="@string/email_label"
+                    android:layout_marginEnd="12dp" />
+
+                <TextView
+                    android:id="@+id/tvUserEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="john.doe@example.com"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_copy"
+                    android:contentDescription="@string/copy_email"
+                    android:layout_marginStart="8dp"
+                    android:tint="@color/text_hint" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Stats Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_stats_section"
+            android:padding="12dp">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_marginStart="12dp">
+                android:gravity="center">
 
                 <TextView
-                    android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name: John Doe"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:id="@+id/tvUserId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ID: 1"
+                    android:text="Active"
                     android:textSize="12sp"
-                    android:textColor="@color/text_secondary"
-                    android:layout_marginTop="2dp" />
+                    android:textColor="@color/green_accent"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:textSize="10sp"
+                    android:textColor="@color/text_secondary" />
 
             </LinearLayout>
 
-        </LinearLayout>
-
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/light_gray"
-            android:layout_marginBottom="12dp" />
-
-        <!-- Email Section -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
-
-            <ImageView
-                android:layout_width="24dp"
+            <View
+                android:layout_width="1dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_email"
-                android:contentDescription="@string/email_label"
-                android:tint="@color/primary_blue" />
+                android:background="@color/light_gray"
+                android:layout_marginHorizontal="12dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/email_label"
-                android:textSize="12sp"
-                android:textColor="@color/text_secondary"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:id="@+id/tvUserEmail"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="john@example.com"
-                android:textSize="14sp"
-                android:textColor="@color/text_primary"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Premium"
+                    android:textSize="12sp"
+                    android:textColor="@color/accent_purple"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Member"
+                    android:textSize="10sp"
+                    android:textColor="@color/text_secondary" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
