@@ -1,6 +1,6 @@
 package com.projs.allinon_mvvm_diretrofitcoroutinesroom.di
 
-import com.projs.allinon_mvvm_diretrofitcoroutinesroom.network.ApiService
+import com.projs.allinon_mvvm_diretrofitcoroutinesroom.model.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object NetworkModule {
 
     @Provides
-    fun ApiClient(): Retrofit{
+    fun providesApiClient(): Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://jsonplaceholder.typicode.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -21,7 +21,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun apiService(retrofit: Retrofit): ApiService{
+    fun providesapiService(retrofit: Retrofit): ApiService{
         return retrofit.create(ApiService::class.java)
     }
 }
